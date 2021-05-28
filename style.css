@@ -1,0 +1,477 @@
+body {
+    margin: 0
+}
+
+* {
+    box-sizing: border-box;
+    
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    height: 12vh;
+   
+    background-color: #333;
+    display: flex;
+    position: relative;
+    z-index: 3;
+}
+
+.heading{
+    padding: 0% 15% 0% 15%;
+    font-size: xxx-large;
+    font-weight: bolder;
+    background: linear-gradient(#f32170,#ffeb07,#ff00eb);
+    -webkit-text-fill-color:transparent;
+    -webkit-background-clip: text;
+    text-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+
+.ticket-container {
+    height: 88vh;
+    background-color: #f2f2f2;
+    position: relative;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow-y: auto;
+   
+}
+
+.filter-container,
+.add-delete-container {
+    height: 8vh;
+    margin-top: 2vh;
+    margin-left: 8vh;
+    border-radius: 3px;
+    background-color: #444;
+}
+
+.filter-container {
+    width: 18vw;
+    display: flex;
+}
+
+.add-delete-container {
+    width: 11vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter {
+    height: 100%;
+    width: 25%;
+}
+
+.pink-color-btn,
+.blue-color-btn,
+.green-color-btn,
+.yellow-color-btn {
+    display: block;
+    width: 40%;
+    height: 40%;
+    border-radius: 3px;
+    margin-top: calc(8vh * 0.3);
+    margin-bottom: calc(8vh * 0.3);
+    margin-left: calc(4.5vw * 0.3);
+    margin-right: calc(4.5vw * 0.3);
+}
+
+.pink-color-btn, .modal-pink-filter, .ticket-color-pink {
+    background-color: pink;
+}
+
+.green-color-btn, .modal-green-filter, .ticket-color-green {
+    background-color: green;
+}
+
+.yellow-color-btn, .modal-yellow-filter, .ticket-color-yellow {
+    background-color: yellow;
+}
+
+.blue-color-btn, .modal-blue-filter, .ticket-color-blue {
+    background-color: blue;
+}
+
+.filter:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.filter.active {
+    background-color: black;
+}
+
+.add,.delete {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.action-btn {
+    display: block;
+    height: 40%;
+    width: 40%;
+    margin-top: calc(8vh * 0.3);
+    margin-bottom: calc(8vh * 0.3);
+    margin-left: calc(4.5vw * 0.3);
+    margin-right: calc(4.5vw * 0.3);
+    background-color: white;
+    padding-left: 3%;
+}
+
+.add:hover, .delete:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.modal {
+    box-shadow: 13px 3px 50px 10px grey ,inset 5px -5px 30px rgb(227,149,16);
+    height: 18rem;
+    width: 35rem;
+    background-color: white;
+    display: flex;
+    position: absolute;
+    z-index:1;
+    top: 8rem;
+    left: calc((100vw - 35rem) / 2);
+    border:9px double black;
+    
+}
+
+.task-to-be-added {
+    width: 70%;
+    height: 100%;
+    padding: 3rem;
+    outline: none;
+    overflow: auto;
+    
+}
+
+.modal-priority-list {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    justify-content: space-between;
+    padding: 3rem;
+    background-color: rgb(245, 186, 83);
+}
+
+.modal-filter {
+    width: 100%;
+    height: 20%;
+}
+
+.modal-filter:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.modal-filter.active {
+    border: 5px solid;
+}
+
+.ticket {
+    height: 9rem;
+    width: 16rem;
+    background-color: white;
+    margin-bottom: 15px;
+    z-index: 2;
+}
+
+.ticket-color {
+    height: 6%;
+    width: 100%;
+}
+
+.ticket-id {
+    height: 15%;
+    width: 100%;
+    padding: 3%;
+    color: grey;
+}
+
+.task {
+    height: 79%;
+    width: 100%;
+    padding: 3%;
+}
+
+.ticket.active {
+    box-shadow: 0 0 3px 1px;
+}
+
+
+.bubble{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+.items {
+    position:absolute;
+    z-index: 0;
+    display:block;
+    border-radius: 90%;
+    list-style: none;
+    width: 2%;
+    height:2%;
+    animation: animate 8s linear infinite;
+}
+
+.items:first-child{
+    width: 20px ;
+    left:5%;
+    animation-delay:0s;
+    height: 20px;
+    background-image: radial-gradient(#f32170,#ffeb07,white);
+
+}
+.items:nth-child(2){
+    width: 2px ;
+    left:1%;
+    animation-delay:2.5s;
+    animation-duration: 12s;
+    height: 2px;
+   
+}
+.items:nth-child(3){
+    width: 2px ;
+    left:10%;
+    animation-delay:4.5s;
+    animation-duration: 10s;
+    height: 2px;
+    background-image: radial-gradient(#f32170,#ffeb07,white);
+}
+.items:nth-child(4){
+    width: 2px ;
+    left:15%;
+    animation-delay:6.5s;
+    animation-duration: 10s;
+    height: 2px;
+   
+}
+ .items:nth-child(5){
+    width: 3px ;
+    left:20%;
+    animation-delay:0.5s;
+    animation-duration: 10s;
+    height: 3px;
+   
+}
+img{
+    width: 39px;
+    height: 39px;
+}
+
+.items:nth-child(6){
+    width: 3px ;
+    left:25%;
+    animation-delay:2.5s;
+    animation-duration: 10s;
+    height: 3px;
+   
+}
+.items:nth-child(7){
+    width: 30px ;
+    left:30%;
+    animation-delay:4.5s;
+    animation-duration: 6s;
+    height: 30px;
+   
+}
+.items:nth-child(8){
+    width: 30px ;
+    left:35%;
+    animation-delay:6.5s;
+    animation-duration: 8s;
+    height: 30px;
+   
+}
+.items:nth-child(9){
+    width: 40px ;
+    left:40%;
+    animation-delay:0.5s;
+    animation-duration: 6s;
+    height: 40px;
+   
+}
+.items:nth-child(10){
+    width: 40px ;
+    left:45%;
+    animation-delay:2.5s;
+    height: 40px;
+   
+
+}
+.items:nth-child(11){
+    width: 30px ;
+    left:50%;
+    animation-delay:4.5s;
+    animation-duration: 8s;
+    height: 30px;
+   
+}
+.items:nth-child(12){
+    width: 15px ;
+    left:55%;
+    animation-delay:6s;
+    animation-duration: 10s;
+    height: 15px;
+   
+}
+.items:nth-child(13){
+    width: 30px ;
+    left:60%;
+    animation-delay:0.5s;
+    animation-duration: 10s;
+    height: 30px;
+   
+}
+ .items:nth-child(14){
+    width: 30px ;
+    left:65%;
+    animation-delay:2.5s;
+    animation-duration: 10s;
+    height: 30px;
+   
+}
+
+.items:nth-child(15){
+    width: 20px ;
+    left:70%;
+    animation-delay:4s;
+    animation-duration: 10s;
+    height: 10px;
+   
+}
+.items:nth-child(16){
+    width: 30px ;
+    left:75%;
+    animation-delay:6s;
+    animation-duration: 10s;
+    height: 30px;
+   
+}
+.items:nth-child(17){
+    width: 30px ;
+    left:80%;
+    animation-delay:0.5s;
+    animation-duration: 10s;
+    height: 40px;
+   
+}
+.items:nth-child(18){
+    width: 30px ;
+    left:85%;
+    animation-delay:2s;
+    animation-duration: 10s;
+    height: 30px;
+   
+}
+.items:nth-child(19){
+    width: 30px ;
+    left:90%;
+    animation-delay:4s;
+    animation-duration: 10s;
+    height: 30px;
+   
+}
+.items:nth-child(20){
+    width: 30px ;
+    left:95%;
+    animation-delay:6s;
+    animation-duration: 10s;
+    height: 30px;
+
+}
+.items:nth-child(21){
+    width: 40px ;
+    left:90%;
+    animation-delay:8s;
+    animation-duration: 10s;
+    height: 40px;
+   
+}
+@keyframes animate {
+    0%{transform:translateY(0) rotate(0deg) ;
+        opacity:1;
+    }
+     
+    100%{transform:translateY(800px) rotate(360deg) ;
+    }
+}
+
+
+@media screen and (max-width:500px) {
+    .heading{
+        padding:33px 0px 0px 35px;
+        font-size: small;
+    }
+    .add-delete-container{
+        margin-left: 33px;
+    }
+    .material-icons{
+        width:25px;
+        height:22px;
+        margin-right: 13px;
+    }
+    .filter-container{
+        width:100px ;
+        margin-left: 20px;
+    }
+    .filter{
+        width:40px;
+    }
+   
+}
+
+@media screen and (max-width:360px) {
+    .heading{
+        padding:33px 0px 0px 35px;
+        font-size: small;
+    }
+    .add-delete-container{
+        /* margin-left: 23px; */
+        margin-right: 0px;;
+    }
+    .material-icons{
+        width:20px;
+        height:22px;    
+    }
+    .material-icons.action-btn{
+        margin-left: 19px;
+    }
+    .filter-container{
+        width:60px ;
+        margin-left: 10px;
+    }
+    .filter{
+        width:30px;
+    }
+   .modal{
+       left:0px;
+       right:0px;
+       top:0px;
+       width:338px;
+       height:218px;
+       margin-left:10px;
+      margin-top:80px;
+  }
+}
+   
